@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0D7F6077-1217-4DF1-A821-E20160262CDE}</ProjectGuid>
+    <ProjectGuid>{4E3A6F6D-A888-41F3-BCF0-5E1C6FD0FA3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KatlaSport.Services.Tests</RootNamespace>
-    <AssemblyName>KatlaSport.Services.Tests</AssemblyName>
+    <RootNamespace>KatlaSport.Services</RootNamespace>
+    <AssemblyName>KatlaSport.Services</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>KatlaSport.Services.Tests.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\CustomLab.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\KatlaSport.Services.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\CustomLab.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Release\KatlaSport.Services.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -40,10 +40,26 @@
     <AssemblyOriginatorKeyFile>../KatlaSport.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.7.5.2\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,7 +71,7 @@
     <Compile Include="**\*.cs" Exclude="obj\Debug\*.cs;obj\Release\*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KatlaSport.DataAccess\KatlaSport.DataAccess.csproj">
@@ -66,61 +82,10 @@
       <Project>{fbca4661-79c9-4b45-9361-430b0c84f5ea}</Project>
       <Name>KatlaSport.Services.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KatlaSport.Services\KatlaSport.Services.csproj">
-      <Project>{4e3a6f6d-a888-41f3-bcf0-5e1c6fd0fa3e}</Project>
-      <Name>KatlaSport.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\FluentAssertions.Analyzers.0.10.0\analyzers\dotnet\cs\FluentAssertions.Analyzers.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-    <Analyzer Include="..\packages\xunit.analyzers.0.8.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Autofac">
-      <Version>4.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="AutoFixture.AutoMoq">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="AutoFixture.Xunit2">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="AutoMapper">
-      <Version>7.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions">
-      <Version>5.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions.Analyzers">
-      <Version>0.10.0</Version>
-    </PackageReference>
-    <PackageReference Include="Moq">
-      <Version>4.8.2</Version>
-    </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers">
-      <Version>1.0.2</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="System.Threading.Tasks.Extensions">
-      <Version>4.4.0</Version>
-    </PackageReference>
-    <PackageReference Include="xunit">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.analyzers">
-      <Version>0.8.0</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.core">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="xunit.runner.visualstudio">
-      <Version>2.3.1</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
