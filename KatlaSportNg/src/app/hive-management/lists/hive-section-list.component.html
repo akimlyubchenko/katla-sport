@@ -7,11 +7,10 @@
       <th scope="col">Name</th>
     </thead>
     <tbody>
-<<<<<<< HEAD
        <tr *ngFor="let hive of section hives">
-        <th scope="row">{{hive.id}}</th>
-        <th scope="row">{{hive.code}}</th>
-        <th scope="row">{{hive.name}}</th>
+       	<th scope="row">{{hive.id}}</th>
+				<td>{{hive.code}}</td>
+				<td>{{hive.name}}</td>
         <td>
           <span class="btn-toolbar" role="toolbar" aria-label="Hive action buttons" style="display: block; white-space:nowrap;">
             <div class="btn-group mr-2" role="group" aria-label="View group">
@@ -22,7 +21,6 @@
             </div>
           </span>
         </td>
-=======
       <tr *ngFor="let hiveSection of hiveSections">
         <th scope="row">{{hiveSection.id}}</th>
         <td>{{hiveSection.code}}</td>
@@ -34,7 +32,6 @@
               </div>
             </span>
           </td> 
->>>>>>> step8
       </tr>
     </tbody>
   </table>
