@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using KatlaSport.DataAccess;
 using KatlaSport.DataAccess.ProductStoreHive;
 using DbHive = KatlaSport.DataAccess.ProductStoreHive.StoreHive;
 
@@ -119,7 +120,21 @@ namespace KatlaSport.Services.HiveManagement
         /// <inheritdoc/>
         public async Task SetStatusAsync(int hiveId, bool deletedStatus)
         {
-            throw new NotImplementedException();
+            var dbHives = await _context.Hives.Where(h => h.Id == hiveId).ToArrayAsync();
+
+            if (dbHives.Length == 0)
+            {
+                throw new RequestedResourceNotFoundException();
+            }
+
+            var dbHive = dbHives[0];
+            if (dbHive.IsDeleted != deletedStatus)
+            {
+                dbHive.IsDeleted = deletedStatus;
+                dbHive.LastUpdated = DateTime.UtcNow;
+                dbHive.LastUpdatedBy = _userContext.UserId;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
