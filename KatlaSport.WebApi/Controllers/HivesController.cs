@@ -75,6 +75,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.Created, Description = "Creates a new hive")]
         [SwaggerResponse(HttpStatusCode.BadRequest)]
         [SwaggerResponse(HttpStatusCode.Conflict)]
+        [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> AddHive([FromBody] UpdateHiveRequest createRequest)
         {
             if (!ModelState.IsValid)
