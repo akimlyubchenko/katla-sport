@@ -1,9 +1,9 @@
-﻿using Autofac;
-using Autofac.Integration.WebApi;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using Autofac;
+using Autofac.Integration.WebApi;
 
 namespace KatlaSport.WebApi
 {

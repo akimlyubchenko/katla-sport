@@ -38,6 +38,7 @@ namespace KatlaSport.WebApi.Controllers
             {
                 return BadRequest("start");
             }
+
             if (amount < 0)
             {
                 return BadRequest("end");
