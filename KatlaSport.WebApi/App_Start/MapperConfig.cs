@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Linq;
+using AutoMapper;
 
 namespace KatlaSport.WebApi
 {

@@ -1,8 +1,8 @@
-﻿using KatlaSport.Services;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
+using KatlaSport.Services;
 
 namespace KatlaSport.WebApi.CustomFilters
 {
